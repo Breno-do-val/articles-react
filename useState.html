@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article about useState</title>
+</head>
+<body>
+    <div id='root'></div>
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script type="text/babel">
+        const rootElement = document.getElementById("root");
+
+        const MainElement = () => {
+            const [elements, setElements] = React.useState([]);
+
+            const handleAddElements = () => {
+                fetch(`https://jsonplaceholder.typicode.com/todos/${Math.ceil(Math.random() * 10)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        elements.push(data);
+                    });
+            };
+
+            return (
+                <main>
+                    <button onClick={handleAddElements}>Add elements</button>
+                    <div>{JSON.stringify(elements)}</div>
+                </main>
+            )
+        } 
+
+        ReactDOM.render(<MainElement />, rootElement);
+    </script>
+</body>
+</html>
