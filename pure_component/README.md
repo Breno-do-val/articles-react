@@ -18,7 +18,7 @@ All the components are logging a message on its `render()` method. Notice that t
 
 When a parent component gets re-rendered, all the children get re-rendered as well, unless you set `shouldComponentUpdate` to return `false`.
 
-[Example](./index.html)
+[Example here.](./index.html)
 
 ## Takeaways
 
