@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pure Component</title>
+</head>
+<body>
+  <div id='root'></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    const rootElement = document.getElementById("root");
+
+    class JobsRunning extends React.PureComponent {
+      render() {
+        console.log('%cJOBS RUNNING ::: RENDERED', 'color: green')
+        return (
+          <h1>{this.props.job} - Running</h1>
+        )
+      }
+    }
+
+    class JobsOnHold extends React.Component {
+      render() {
+        console.log('%cJOBS ON HOLD ::: RENDERED', 'color: red')
+        return (
+          <h1>{this.props.job}</h1>
+        )
+      }
+    }
+
+    class Jobs extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          job: "Update database"
+        }
+      }
+
+      componentDidMount() {
+        setInterval(() => {
+          this.setState({
+            job: "Update database"
+          })
+        }, 2000)
+      }
+
+      render() {
+        console.log('%cJOBS ::: RENDERED', 'color: cyan')
+        return (
+          <>
+            <JobsOnHold job={this.state.job} />
+            <JobsRunning job={this.state.job} />
+          </>
+        )
+      }
+    }
+
+    ReactDOM.render(<Jobs />, rootElement);
+  </script>
+</body>
+</html>
