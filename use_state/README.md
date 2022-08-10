@@ -6,7 +6,7 @@ It allows you to manage internal state inside a functional component.
   const state = useState('foo');
 ```
 
-> Let's dive deeper into this function call.
+## Let's dive deeper into this function call.
 
 When calling this useState(), you can set an initial state with any data structure and it will return the initial state
 and a function to update the state.
@@ -51,8 +51,8 @@ const handleAddTodos = () => {
 };
 ```
 
-_* useState() overrides the previous state if you don't get it before changing the state, furthermore the state update is asynchronous
-so you might skip a change if you don't get the previous one. *_
+> _useState() overrides the previous state if you don't get it before changing the state, furthermore the state update is asynchronous
+so you might skip a change if you don't get the previous one._
 
 That being said, we need to change how to add more `To-do` into our array.
 
