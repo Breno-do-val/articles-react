@@ -15,20 +15,20 @@
         const rootElement = document.getElementById("root");
 
         const MainElement = () => {
-            const [elements, setElements] = React.useState([]);
+            const [todos, setTodos] = React.useState([]);
 
-            const handleAddElements = () => {
+            const handleAddTodos = () => {
                 fetch(`https://jsonplaceholder.typicode.com/todos/${Math.ceil(Math.random() * 10)}`)
                     .then(response => response.json())
                     .then(data => {
-                        setElements(prevArray => [...prevArray, data]);
+                        setTodos(prev => [...prev, data]);
                     });
             };
 
             return (
                 <main>
-                    <button onClick={handleAddElements}>Add elements</button>
-                    <div>{JSON.stringify(elements)}</div>
+                    <button onClick={handleAddTodos}>Add Todo</button>
+                    <div>{JSON.stringify(todos)}</div>
                 </main>
             )
         } 
